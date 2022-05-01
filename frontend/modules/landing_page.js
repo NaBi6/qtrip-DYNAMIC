@@ -38,10 +38,10 @@ function addCityToDOM(id, city, description, image) {
   // 1. Populate the City details and insert those details into the DOM
   let container = document.createElement('div');
   container.className = "col-12 col-sm-6 col-lg-3 mb4";
-  let innerHTML =`<a href="adventures/?city=london" id='london'>
+  let innerHTML =`<a href="pages/adventures/?city=${id}" id='${id}'>
               <div class="text-center tile-text">
                 <h5>${city}</h5> 
-                <p>${description}</p>
+                <p>${description}</p> 
               </div>
  <img src = ${image} class='img-response img-fluid rounded h-100 pb-4'></a>`;
   container.innerHTML = innerHTML;
