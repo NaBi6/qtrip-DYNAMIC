@@ -55,6 +55,7 @@ footer {
   border-radius: 8px;
   cursor: pointer;
   -webkit-transition: 0.2s all;
+  transition: 0.2s all;
   overflow: hidden;
 
   display: flex;
@@ -69,10 +70,12 @@ footer {
   border-radius: 5px;
   object-fit: cover;
   -webkit-transition: 0.2s all;
+  transition: 0.2s all;
   /* -webkit-filter: brightness(70%); */
 }
 .tile img:hover {
   -webkit-filter: brightness(50%);
+  filter: brightness(50%);
   transform: scale(1.1);
 }
 
@@ -129,27 +132,32 @@ footer {
   position: relative;
   height: 350px;
   /* width: calc(25% - 20px); */
-  /* padding: 6px; */
+  padding: 6px;
   border: 1px solid #ddd;
   border-radius: 8px;
   cursor: pointer;
   -webkit-transition: 0.2s all;
+  transition: 0.2s all;
   overflow: hidden;
-
+  margin-right: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
+  
 }
 .activity-card img {
   width: 100%;
   height: 100%;
-  /* border-radius: 8px; */
+  border-radius: 8px;
   -webkit-transition: 0.2s all;
-  /* -webkit-filter: brightness(70%); */
+  transition: 0.2s all;
+  /* -webkit-filter: brightness(70%);
+  filter: brightness(70%); */
 }
 .activity-card img:hover {
   -webkit-filter: brightness(50%);
+  filter: brightness(50%);
   /* transform: scale(1.1); */
 }
 
@@ -167,10 +175,12 @@ footer {
   width: 100%;
   cursor: pointer;
   -webkit-transition: 0.2s all;
+  transition: 0.2s all;
   border-radius: 2px;
 }
 .activity-card-image:hover {
   -webkit-filter: brightness(50%);
+  filter: brightness(50%);
 }
 .experience-content ul li {
   margin-left: 16px;
@@ -190,13 +200,14 @@ footer {
 .category-filter {
   border: 1px solid orange;
   border-radius: 20px;
-  padding: 5px 20px;
+  padding: 20px;
   margin: 10px 10px 10px 0px;
 }
 .category-banner {
   position: absolute;
+  width: 4rem;
   /* height: 50px; */
-  padding: 5px 10px;
+  padding: 2px 10px;
   box-shadow: 2px 1px 10px 1px rgba(0, 0, 0, 0.3);
   /*
   box-shadow: 0px 9.4px 20.4px rgba(0, 0, 0, 0.13),
@@ -205,16 +216,21 @@ footer {
   color: #fff;
   background: rgb(255, 145, 0);
   top: 0;
-  right: 0;
+  right: 4px;
+ 
   z-index: 1;
   margin-top: 16px;
-  /* margin-right: 8px; */
+  /* margin-right: -0.1px; */
   display: flex;
+  /* flex-wrap: wrap; */
   justify-content: center;
   align-items: center;
   border-radius: 10px 0px 0px 10px;
   font-weight: bolder;
+  transform: translateX(10%);
+  
 }
+
 
 .reserve-button {
   width: 100%;
