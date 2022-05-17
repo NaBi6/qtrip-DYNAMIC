@@ -4,7 +4,13 @@ import config from "../conf/index.js";
 function getAdventureIdFromURL(search) {
   // TODO: MODULE_ADVENTURE_DETAILS
   // 1. Get the Adventure Id from the URL
+  // debugger;
+  // const adv = new URLSearchParams('?adventure=123');
 
+  // return adv.get('adventure');
+  const urlParams = new URLSearchParams(search);
+  const adventureId = urlParams.get("adventure");
+  return adventureId;
 
   // Place holder for functionality to work in the Stubs
   return null;
@@ -13,25 +19,73 @@ function getAdventureIdFromURL(search) {
 async function fetchAdventureDetails(adventureId) {
   // TODO: MODULE_ADVENTURE_DETAILS
   // 1. Fetch the details of the adventure by making an API call
+  // debugger;
+  try {
 
+  const res = await fetch(config.backendEndpoint+`/adventures/detail/?adventure=${adventureId}`);
+  let advs = await res.json();
+  // console.log(advs);
+  return advs;
+  }catch(err){
+    console.log('Error:', err);
+    return null;
+  }
 
   // Place holder for functionality to work in the Stubs
-  return null;
+  
 }
 
 //Implementation of DOM manipulation to add adventure details to DOM
 function addAdventureDetailsToDOM(adventure) {
   // TODO: MODULE_ADVENTURE_DETAILS
   // 1. Add the details of the adventure to the HTML DOM
-
+  // debugger;
+    document.getElementById('adventure-name').innerHTML = adventure.name;
+    document.getElementById('adventure-subtitle').innerHTML = adventure.subtitle;
+    
+    adventure.images.map((image) => {
+      let ele = document.createElement('div');
+      ele.className = "col-lg-8";
+      ele.innerHTML = `<img src="${image}" alt="Not_Found" srcset="" class="activity-card-image pb-3 pb-md-0" />`;
+      document.getElementById("photo-gallery").appendChild(ele);
+    });
+    document.getElementById('adventure-content').innerHTML = adventure.content;
+  
+  
 }
 
 //Implementation of bootstrap gallery component
 function addBootstrapPhotoGallery(images) {
   // TODO: MODULE_ADVENTURE_DETAILS
   // 1. Add the bootstrap carousel to show the Adventure images
+  document.getElementById('photo-gallery').innerHTML =`
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner" id="carousel-inner">
 
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>`
+
+images.map((image,idx)=>{
+  let ele = document.createElement('div');
+  ele.className = `carousel-item ${idx === 0 ? "active" : ""}`;
+  ele.innerHTML = `<img src="${image}" alt="Not_Found" srcset="" class="activity-card-image pb-3 pb-md-0" />`;
+  document.getElementById("carousel-inner").appendChild(ele);
+});
 }
+
 
 //Implementation of conditional rendering of DOM based on availability
 function conditionalRenderingOfReservationPanel(adventure) {
