@@ -166,10 +166,10 @@ function getFiltersFromLocalStorage() {
  
   return JSON.parse(localStorage.getItem("filters"));
   // Place holder for functionality to work in the Stubs
-  // return null;
+  return null;
 }
 
-//Implementation of DOM manipulation to add the following filters to DOM :
+//Implementation of DOM manipulation to add the following filt`ers to DOM :
 // 1. Update duration filter with correct value
 // 2. Update the category pills on the DOM
 
